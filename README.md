@@ -39,7 +39,9 @@ contract ITTEST is Test {
      - forge compile --thread ``` Number of threads to use. Specifying 0 defaults to the number of logical cores```
      - forge compile -vvvvv ```verbosity log messages ```
         - v 
-        - vv
-        - vvv
-        - vvvv
-        - vvvvv
+        - vv Print logs for all tests
+        - vvv Print execution traces for failing tests
+        - vvvv Print execution traces for all tests, and setup traces for failing tests.
+        - vvvvv  Print execution and setup traces for all tests, including storage changes
+      
+
