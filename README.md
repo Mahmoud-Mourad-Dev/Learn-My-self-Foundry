@@ -19,6 +19,10 @@ $ forge clone 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 WETH9
 This creates a new directory WETH9, configures it as a foundry project and clones all
 the source code of the contract into it. This also initializes a new git repository
 ```
+## Remappings
+```solidity
+remappings = [ "@solmate-utils/=lib/solmate/src/utils/",]
+```
 
 
 
