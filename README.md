@@ -127,5 +127,47 @@ You can run command  ```forge test --gas-report ``` to see gas cost
 Ran 1 test suite in 10.68ms (1.78ms CPU time): 0 tests passed, 1 failed, 0 skipped (1 total tests)
 ```
 
+When i expect function fail write test function with prfix testFail
+```solidity
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+import {Test, console} from "forge-std/Test.sol";
+import "src/Jop.sol";
+
+contract ITTEST is Test {
+    Jop public jop;
+
+    function setUp() public {
+        jop = new Jop();
+            }
+
+    function testFailMahmoudJop()public view{
+         assertEq(jop.mahmoudJop(),"Smart Contract Auditor");
+    }   
+
+}
+```
+Run command test again ``` forge test ```
+OUTPUT
+```
+[⠊] Compiling...
+[⠢] Compiling 2 files with Solc 0.8.28
+[⠆] Solc 0.8.28 finished in 1.13s
+Compiler run successful!
+
+Warning: `testFail*` has been deprecated and will be removed in the next release. Consider changing to test_Revert[If|When]_Condition and expecting a revert. Found deprecated testFail* function(s): testFailMahmoudJop.
+Ran 1 test for test/Jop.t.sol:ITTEST
+[PASS] testFailMahmoudJop() (gas: 11938)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 508.86µs (100.51µs CPU time)
+
+Ran 1 test suite in 10.91ms (508.86µs CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+```
+You can also run specific tests by passing a filter:
+``` forge test --match-contract ComplicatedContractTest --match-test test_Deposit ```
+``` $ forge test --match-path test/ContractB.t.sol ```
+NOTE
+
+Test functions must have either external or public visibility. Functions declared as internal or private won’t be picked up by Forge, even if they are prefixed with test.
       
 
